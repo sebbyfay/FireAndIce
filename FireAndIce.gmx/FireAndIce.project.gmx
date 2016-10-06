@@ -8,14 +8,17 @@
   <sprites name="sprites">
     <sprite>sprites\spr_p1</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_surface1</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bck_one</background>
+  </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\obj_p1</object>
     <object>objects\obj_parentBlock</object>
     <object>objects\obj_wall1</object>
+    <object>objects\obj_surface1</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

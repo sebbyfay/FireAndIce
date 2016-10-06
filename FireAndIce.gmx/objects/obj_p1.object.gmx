@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -31,14 +31,14 @@ xVelocity = 0;
 yVelocity = 0;
 maxXVelocity = 300;
 xAccel = 1500;
-//xDeceleration = .25; //every second the speed should be 50% of what it was
+xDeceleration = .25; //every second the speed should be 50% of what it was
 
 
 tickTime = 1 / room_speed; //amount of seconds for every tick
 
 jumpTimer = 0;
 jumpCoolDown = room_speed * 2.5;  //2.5 seconds of jump cool down
-jumpVelocity = -500; //how fast a jump will send the player upwards
+jumpVelocity = -650; //how fast a jump will send the player upwards
 </string>
           </argument>
         </arguments>
@@ -167,27 +167,33 @@ if(jumpTimer &gt; 0){
             <string>var i;
 for (i = 0; i &lt; instance_number(obj_parentBlock); i += 1){ //loop through all the blocks
     block[i] = instance_find(obj_parentBlock,i);
-    if( abs(x - block[i].x) &lt; block[i].sprite_width/2 + sprite_width/2){ //if horizontally aligned
-        show_debug_message("horizontally aligned to block");
-        if( ( abs((y + yVelocity * tickTime) - block[i].y )) &lt; block[i].sprite_height/2 + sprite_height/2) { //if next tick it will collide
-            yVelocity = 0;
-            jumpTimer = 0;
-            if(y &gt; block[i].y) //if it is underneath
-                y = block[i].y + block[i].sprite_height/2 + sprite_height/2;
-            if(y &lt; block[i].y) //if it is above
-                y = block[i].y - block[i].sprite_height/2 - sprite_height/2;
-        }
-    }
-    if( abs(y - block[i].y) &lt; block[i].sprite_height/2 + sprite_height/2){ //if vertically aligned
-        show_debug_message("horizontally aligned to block");
-        if( (abs((x + xVelocity * tickTime) - block[i].x )) &lt; block[i].sprite_width/2 + sprite_width/2) { //if next tick it will collide
+    if( abs(y - block[i].y) &lt; block[i].height/2 + sprite_height/2){ //if vertically aligned
+        //show_debug_message("horizontally aligned to block");
+        if( (abs((x + xVelocity * tickTime) - block[i].x )) &lt; block[i].width/2 + sprite_width/2) { //if next tick it will collide
             xVelocity = 0;
             if(x &gt; block[i].x) // if it is to the right
-                x = block[i].x + block[i].sprite_width/2 + sprite_width/2;
+                x = block[i].x + block[i].width/2 + sprite_width/2;
             if(x &lt; block[i].x) //if it is to the left
-                x = block[i].x - block[i].sprite_width/2 - sprite_width/2;
+                x = block[i].x - block[i].width/2 - sprite_width/2;
+        }
+        continue;
+    }
+    if( abs(x - block[i].x) &lt; block[i].width/2 + sprite_width/2){ //if horizontally aligned
+        //show_debug_message("horizontally aligned to block");
+        if( ( abs((y + yVelocity * tickTime) - block[i].y )) &lt; block[i].height/2 + sprite_height/2) { //if next tick it will collide
+            yVelocity = 0;
+            
+            
+            
+            if(y &gt; block[i].y) //if it is underneath
+                y = block[i].y + block[i].height/2 + sprite_height/2;
+            if(y &lt; block[i].y){ //if it is above
+                y = block[i].y - block[i].height/2 - sprite_height/2;
+                jumpTimer = 0;
+            }
         }
     }
+    
 }
 </string>
           </argument>
@@ -229,10 +235,21 @@ for (i = 0; i &lt; instance_number(obj_parentBlock); i += 1){ //loop through all
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//xVelocity -= (xVelocity * xDeceleration) * tickTime; //deceleration
+            <string>xVelocity -= (xVelocity * xDeceleration) * tickTime; //deceleration
 
 x += xVelocity * tickTime; //move horizontally
 y += yVelocity * tickTime; //move vertically
+
+if(x + sprite_width/2 &gt; room_width){
+    x = room_width - sprite_width / 2;
+    xVelocity = -.5 * xVelocity;
+}
+    
+if(x - sprite_width/2 &lt; 0){
+    x = sprite_width / 2;
+    xVelocity = -.5 * xVelocity;
+}
+    
 </string>
           </argument>
         </arguments>
