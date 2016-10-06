@@ -9,19 +9,27 @@
     <sprite>sprites\spr_p1</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_surface1</sprite>
+    <sprite>sprites\spr_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_one</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font_button</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_p1</object>
     <object>objects\obj_parentBlock</object>
     <object>objects\obj_wall1</object>
     <object>objects\obj_surface1</object>
+    <object>objects\obj_button</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\room_main_menu</room>
+    <room>rooms\room_level_1</room>
+    <room>rooms\room_instructions</room>
+    <room>rooms\room_credits</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
