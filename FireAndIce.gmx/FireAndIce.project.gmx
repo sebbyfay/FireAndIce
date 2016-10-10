@@ -10,13 +10,24 @@
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_surface1</sprite>
     <sprite>sprites\spr_button</sprite>
+    <sprite>sprites\spr_play_game</sprite>
+    <sprite>sprites\spr_credits</sprite>
+    <sprite>sprites\spr_instructions</sprite>
+    <sprite>sprites\spr_quit_game</sprite>
+    <sprite>sprites\spr_main_menu</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_one</background>
+    <background>background\bck_instructions</background>
+    <background>background\bck_credits</background>
+    <background>background\bck_main_menu</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_text.gml</script>
+  </scripts>
   <fonts name="fonts">
-    <font>fonts\font_button</font>
+    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_p1</object>
@@ -24,6 +35,12 @@
     <object>objects\obj_wall1</object>
     <object>objects\obj_surface1</object>
     <object>objects\obj_button</object>
+    <object>objects\obj_text</object>
+    <object>objects\obj_play_game</object>
+    <object>objects\obj_credits</object>
+    <object>objects\obj_quit_game</object>
+    <object>objects\obj_instructions</object>
+    <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main_menu</room>
