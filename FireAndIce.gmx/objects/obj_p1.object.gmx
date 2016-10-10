@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -47,26 +47,6 @@ jumpVelocity = -650; //how fast a jump will send the player upwards
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Handles Gravity, Floor</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -81,7 +61,8 @@ jumpVelocity = -650; //how fast a jump will send the player upwards
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(y &lt; room_height){ //apply gravity
+            <string>///Handles Gravity, Floor
+if(y &lt; room_height){ //apply gravity
     yVelocity += (playerGravity * tickTime);
 }
 
@@ -130,26 +111,6 @@ if(jumpTimer &gt; 0){
       </action>
       <action>
         <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Handles Block Collisions</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -164,7 +125,8 @@ if(jumpTimer &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var i;
+            <string>///Handles Block Collisions
+var i;
 for (i = 0; i &lt; instance_number(obj_parentBlock); i += 1){ //loop through all the blocks
     block[i] = instance_find(obj_parentBlock,i);
     if( abs(y - block[i].y) &lt; block[i].height/2 + sprite_height/2){ //if vertically aligned
@@ -201,26 +163,6 @@ for (i = 0; i &lt; instance_number(obj_parentBlock); i += 1){ //loop through all
       </action>
       <action>
         <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Handles Movement</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -235,7 +177,8 @@ for (i = 0; i &lt; instance_number(obj_parentBlock); i += 1){ //loop through all
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xVelocity -= (xVelocity * xDeceleration) * tickTime; //deceleration
+            <string>///Handles Movement
+xVelocity -= (xVelocity * xDeceleration) * tickTime; //deceleration
 
 x += xVelocity * tickTime; //move horizontally
 y += yVelocity * tickTime; //move vertically
